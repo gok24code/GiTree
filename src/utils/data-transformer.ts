@@ -1,5 +1,5 @@
 // src/utils/data-transformer.ts
-import { GitTreeItem } from "../services/github";
+import { type GitTreeItem } from "../services/github";
 
 export interface TreeNode {
   name: string;

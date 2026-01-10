@@ -1,8 +1,9 @@
 // src/components/TreeView.tsx
 import React from 'react';
 import TreeView, { flattenTree } from 'react-accessible-treeview';
-import { GitTreeResponse } from '../services/github'; // Removed getFileContent
-import { buildTree, TreeNode } from '../utils/data-transformer';
+import { type GitTreeResponse } from '../services/github'; // Removed getFileContent
+// @ts-expect-error
+import { buildTree, type TreeNode } from '../utils/data-transformer';
 import { FaFolder, FaFile } from 'react-icons/fa';
 // Removed FileViewer import
 import './TreeView.css';
@@ -29,7 +30,7 @@ const TreeViewComponent: React.FC<TreeViewProps> = ({ data }) => {
         data={flattenedData}
         aria-label="File tree"
         className="basic"
-        nodeRenderer={({ element, isBranch, isExpanded, getNodeProps, level }) => (
+        nodeRenderer={({ element, isBranch, getNodeProps, level }) => (
           <div
             {...getNodeProps()}
             style={{ paddingLeft: level * 20 }}

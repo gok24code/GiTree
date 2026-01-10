@@ -4,22 +4,49 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  
+  /* Dark theme variables (default) */
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  --accent-color: #8fbc8f; 
+  --accent-color-hover: #7aab7a; /* Dark theme hover, slightly darker */
+  --input-background-color: #2a2a2a;
+  --input-border-color: #444444;
+  --button-background-color: #8fbc8f;
+  --button-text-color: #1a1a1a;
+  --tooltip-background: #333;
+  --tooltip-text: #ffffff;
 
+  color: var(--text-color); 
+  background-color: var(--background-color); 
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Light theme variables (applied when body has light-theme class) */
+body.light-theme {
+  --background-color: #ffffff;
+  --text-color: #1a1a1a;
+  --accent-color: #6a936a; /* A slightly darker green for contrast */
+  --accent-color-hover: #5a835a; /* Light theme hover, slightly darker */
+  --input-background-color: #f0f0f0;
+  --input-border-color: #cccccc;
+  --button-background-color: #6a936a;
+  --button-text-color: #ffffff;
+  --tooltip-background: #f0f0f0;
+  --tooltip-text: #1a1a1a;
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--accent-color);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--accent-color-hover);
 }
 
 body {
@@ -38,27 +65,17 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color); /* Added to use variable */
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s; /* Added color to transition */
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}

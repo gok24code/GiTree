@@ -1,6 +1,6 @@
 // src/components/ForceGraphView.tsx
 import React from 'react';
-import { GitTreeResponse } from '../services/github';
+import { type GitTreeResponse } from '../services/github';
 import ForceGraph from './ForceGraph'; // Import the new ForceGraph component
 
 interface ForceGraphViewProps {

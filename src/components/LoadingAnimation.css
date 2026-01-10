@@ -1,0 +1,38 @@
+/* src/components/LoadingAnimation.css */
+
+.loading-animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between dots */
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--accent-color); /* Use accent color for dots */
+  animation: pulse 1.4s infinite ease-in-out both;
+}
+
+.dot-1 {
+  animation-delay: -0.32s; /* Start earlier */
+}
+
+.dot-2 {
+  animation-delay: -0.16s; /* Start in middle */
+}
+
+.dot-3 {
+  animation-delay: 0s; /* Start last */
+}
+
+@keyframes pulse {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}

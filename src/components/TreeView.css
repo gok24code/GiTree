@@ -2,11 +2,11 @@
 .tree-view-wrapper {
   width: 100%;
   max-width: 800px;
-  background-color: #2a2a2a;
+  background-color: var(--input-background-color); /* Use theme variable */
   border-radius: 8px;
   padding: 1rem;
   overflow: auto;
-  color: var(--text-color);
+  color: var(--text-color); /* Ensure text color is theme-aware */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added subtle shadow */
 }
 
@@ -21,10 +21,11 @@
   padding: 4px;
   border-radius: 4px; /* Slightly rounded corners */
   transition: background-color 0.2s ease-in-out; /* Smooth transition */
+  color: var(--text-color); /* Explicitly set text color to theme variable */
 }
 
 .basic .tree-node:hover {
-  background-color: #3a3a3a;
+  background-color: var(--input-border-color); /* Use theme variable for hover background */
 }
 
 .basic .tree-branch-wrapper {
@@ -37,6 +38,6 @@
 }
 
 .file-node:hover {
-  background-color: #3a3a3a;
+  background-color: var(--input-background-color); /* Use theme variable for hover background */
   color: var(--accent-color);
 }

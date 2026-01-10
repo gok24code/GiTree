@@ -1,23 +1,16 @@
-html, body {
-  height: 100%;
-}
+/* src/App.css */
 
-:root {
-  --background-color: #1a1a1a;
-  --text-color: #ffffff;
-  --accent-color: #8fbc8f;
-  --input-background-color: #2a2a2a;
-  --input-border-color: #444444;
-  --button-background-color: #8fbc8f;
-  --button-text-color: #1a1a1a;
+html,
+body {
+  height: 100%;
 }
 
 body {
   background-color: var(--background-color);
   color: var(--text-color);
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -33,6 +26,57 @@ body {
   box-sizing: border-box;
 }
 
+/* Keyframe animations */
+@keyframes char-float-converge {
+  0% {
+    opacity: 0;
+    transform: translate(var(--initial-x, 0), var(--initial-y, 0)) rotate(var(--initial-rotate, 0deg)) scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes icon-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in-up-staggered {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -40,19 +84,78 @@ body {
   justify-content: center;
   text-align: center;
   flex-grow: 1; /* Allow main-container to grow and push content to center */
+  animation: fade-in 0.5s ease-out forwards; /* Container fades in */
 }
 
-.title {
+.main-container .title {
   font-size: 4rem;
   color: var(--accent-color);
   margin-bottom: 2rem;
-  display: flex;
+  display: flex; /* Changed to flex to align icon and characters */
   align-items: center;
+  /* Removed individual animation for the whole title */
+  opacity: 1; /* Children will handle their own opacity */
 }
 
-.input-container {
+.title-icon {
+  display: inline-block; /* Allow transform */
+  margin-right: 10px; /* Space between icon and text */
+  opacity: 0; /* Hidden initially */
+  animation: icon-pop-in 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+  animation-delay: 0.2s;
+}
+
+.title-char {
+  display: inline-block; /* Important for transform */
+  opacity: 0; /* Hidden initially */
+  animation: char-float-converge 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Staggered delays for each character */
+.title-char:nth-child(2) { /* 'G' */
+  --initial-x: -100px;
+  --initial-y: -60px;
+  --initial-rotate: -20deg;
+  animation-delay: 0.4s;
+}
+.title-char:nth-child(3) { /* 'i' */
+  --initial-x: 60px;
+  --initial-y: -80px;
+  --initial-rotate: 15deg;
+  animation-delay: 0.5s;
+}
+.title-char:nth-child(4) { /* 'T' */
+  --initial-x: -80px;
+  --initial-y: 40px;
+  --initial-rotate: 10deg;
+  animation-delay: 0.6s;
+}
+.title-char:nth-child(5) { /* 'r' */
+  --initial-x: 100px;
+  --initial-y: 60px;
+  --initial-rotate: -10deg;
+  animation-delay: 0.7s;
+}
+.title-char:nth-child(6) { /* 'e' */
+  --initial-x: -40px;
+  --initial-y: -100px;
+  --initial-rotate: 25deg;
+  animation-delay: 0.8s;
+}
+.title-char:nth-child(7) { /* 'e' */
+  --initial-x: 80px;
+  --initial-y: 20px;
+  --initial-rotate: -5deg;
+  animation-delay: 0.9s;
+}
+
+
+.main-container .input-container {
   display: flex;
   align-items: center;
+  opacity: 0; /* Hidden initially for animation */
+  animation: fade-in-up-staggered 0.7s ease-out forwards;
+  animation-delay: 1s; /* Delayed after title animation */
 }
 
 .repo-input {
@@ -136,7 +239,7 @@ body {
   max-width: 800px; /* Same as tree-view-wrapper */
   margin-top: 1rem;
   padding: 1rem;
-  background-color: #2a2a2a;
+
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   color: var(--text-color);
@@ -172,7 +275,78 @@ body {
   color: var(--text-color);
 }
 
-.language-tooltip {
-  /* Styles already defined inline in component,
-     but can be overridden here if needed for global styling */
+/* New styles for the theme switch */
+.theme-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+.theme-switch input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.theme-switch label {
+  cursor: pointer;
+  width: 70px;
+  height: 35px;
+  background: var(--input-background-color);
+  border-radius: 35px;
+  position: relative;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.theme-switch label:hover {
+  filter: brightness(1.1); /* Slightly brighter on hover */
+}
+
+.theme-switch label .icon {
+  font-size: 1.2rem;
+  z-index: 1; /* Ensure icons are above the background */
+}
+
+.theme-switch label .sun-icon {
+  color: var(--text-color); /* Color for sun icon in 
+   mode */
+}
+
+.theme-switch label .moon-icon {
+  color: var(--accent-color); /* Color for moon icon in light mode */
+}
+
+.theme-switch label::after {
+  content: "";
+  background: var(--accent-color);
+  width: 29px; /* Slightly smaller than height to create gap */
+  height: 29px; /* Slightly smaller than height to create gap */
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s ease-in-out, background-color 0.3s;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switch input[type="checkbox"]:checked + label::after {
+  transform: translateX(45px); /* Move to the right */
+  background: var(
+    --button-background-color
+  ); /* Match button color in light mode */
+}
+
+.theme-switch input[type="checkbox"]:checked + label .sun-icon {
+  color: var(--button-text-color); /* Color for sun icon in light mode */
+}
+
+.theme-switch input[type="checkbox"]:checked + label .moon-icon {
+  color: var(--text-color); /* Color for moon icon in dark mode */
 }
