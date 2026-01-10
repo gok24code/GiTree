@@ -1,0 +1,42 @@
+/* src/components/TreeView.css */
+.tree-view-wrapper {
+  width: 100%;
+  max-width: 800px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow: auto;
+  color: var(--text-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added subtle shadow */
+}
+
+.name {
+  margin-left: 8px;
+}
+
+.basic .tree-node {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px; /* Slightly rounded corners */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition */
+}
+
+.basic .tree-node:hover {
+  background-color: #3a3a3a;
+}
+
+.basic .tree-branch-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-node {
+  cursor: pointer;
+}
+
+.file-node:hover {
+  background-color: #3a3a3a;
+  color: var(--accent-color);
+}

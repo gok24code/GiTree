@@ -1,0 +1,178 @@
+html, body {
+  height: 100%;
+}
+
+:root {
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  --accent-color: #8fbc8f;
+  --input-background-color: #2a2a2a;
+  --input-border-color: #444444;
+  --button-background-color: #8fbc8f;
+  --button-text-color: #1a1a1a;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%; /* Ensure root takes full width */
+  box-sizing: border-box;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-grow: 1; /* Allow main-container to grow and push content to center */
+}
+
+.title {
+  font-size: 4rem;
+  color: var(--accent-color);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.repo-input {
+  background-color: var(--input-background-color);
+  border: 1px solid var(--input-border-color);
+  color: var(--text-color);
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  width: 300px;
+  margin-right: 1rem;
+  transition: border-color 0.3s;
+}
+
+.repo-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.submit-button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 1rem 2rem; /* Increased padding */
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #7aab7a;
+}
+
+.view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh; /* Restored for toggle view */
+}
+
+.view-toggle-buttons {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 10px;
+}
+
+.view-toggle-button {
+  background-color: var(--input-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--input-border-color);
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.view-toggle-button:hover {
+  background-color: #3a3a3a;
+  border-color: var(--accent-color);
+}
+
+.view-toggle-button.active {
+  background-color: var(--accent-color);
+  color: var(--button-text-color);
+  border-color: var(--accent-color);
+}
+
+.tree-view-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */ /* Removed to allow tree to take full vertical space */
+}
+
+/* Language Graph Styles */
+.language-graph-container {
+  width: 100%;
+  max-width: 800px; /* Same as tree-view-wrapper */
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative; /* For tooltip positioning */
+}
+
+.language-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.language-legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.legend-color-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.legend-text {
+  color: var(--text-color);
+}
+
+.language-tooltip {
+  /* Styles already defined inline in component,
+     but can be overridden here if needed for global styling */
+}
