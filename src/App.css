@@ -350,3 +350,42 @@ body {
 .theme-switch input[type="checkbox"]:checked + label .moon-icon {
   color: var(--text-color); /* Color for moon icon in dark mode */
 }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .main-container .title {
+    font-size: 2.5rem; /* Smaller font size for mobile */
+    margin-bottom: 1rem;
+  }
+
+  .main-container .input-container {
+    flex-direction: column; /* Stack inputs and button vertically */
+    width: 90%; /* Adjust width for better spacing */
+  }
+
+  .repo-input {
+    width: 100%; /* Full width for inputs */
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 1rem; /* Add bottom margin for spacing */
+  }
+
+  .submit-button {
+    width: 100%; /* Full width button */
+    padding: 0.8rem 1.5rem; /* Adjust padding */
+    margin-top: 0.5rem; /* Add top margin */
+  }
+
+  .view-toggle-buttons {
+    flex-direction: column; /* Stack toggle buttons vertically */
+    gap: 0.5rem; /* Adjust gap */
+  }
+
+  .view-toggle-button {
+    width: 90%; /* Make buttons wider */
+  }
+
+  .theme-switch {
+    top: 10px;
+    right: 10px;
+  }
+}
